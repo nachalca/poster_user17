@@ -1,0 +1,543 @@
+\documentclass[final]{beamer}
+\usepackage{graphicx, color}
+\usepackage{natbib}
+\usepackage{lmodern}
+\usepackage{exscale}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amsmath}
+
+\bibpunct{(}{)}{;}{a}{}{,} 
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\definecolor{fgcolor}{rgb}{0.2, 0.2, 0.2}
+\newcommand{\hlnumber}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlfunctioncall}[1]{\textcolor[rgb]{0.501960784313725,0,0.329411764705882}{\textbf{#1}}}%
+\newcommand{\hlstring}[1]{\textcolor[rgb]{0.6,0.6,1}{#1}}%
+\newcommand{\hlkeyword}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
+\newcommand{\hlargument}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hlcomment}[1]{\textcolor[rgb]{0.180392156862745,0.6,0.341176470588235}{#1}}%
+\newcommand{\hlroxygencomment}[1]{\textcolor[rgb]{0.43921568627451,0.47843137254902,0.701960784313725}{#1}}%
+\newcommand{\hlformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hleqformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hlassignement}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
+\newcommand{\hlpackage}[1]{\textcolor[rgb]{0.588235294117647,0.709803921568627,0.145098039215686}{#1}}%
+\newcommand{\hlslot}[1]{\textit{#1}}%
+\newcommand{\hlsymbol}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlprompt}[1]{\textcolor[rgb]{0.2,0.2,0.2}{#1}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[scale=1.24]{beamerposter}
+\usepackage{graphicx}      % allows us to import images
+%\usepackage{subcaption}
+\graphicspath{{../figs_dt/}}
+\parskip    10pt
+%%%%%%%%%%%%%
+
+%-----------------------------------------------------------
+% Define the column width and poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% The separation I chose is 0.024 and I want 4 columns
+% Then set onecolwid to be (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be 2*onecolwid + sepwid = 0.464
+%-----------------------------------------------------------
+
+\newlength{\sepwid}
+\newlength{\onecolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\setlength{\paperwidth}{48in}
+\setlength{\paperheight}{36in}
+\setlength{\sepwid}{0.024\paperwidth}
+\setlength{\onecolwid}{0.30\paperwidth}
+\setlength{\twocolwid}{0.624\paperwidth}
+\setlength{\threecolwid}{0.924\paperwidth}
+\setlength{\topmargin}{-0.5in}
+%\usetheme{TUGraz}
+\usetheme{confposter}
+%\usetheme{AAU}
+%\usetheme{Berlin}
+%\usepackage{exscale}
+
+%-----------------------------------------------------------
+% The next part fixes a problem with figure numbering. Thanks Nishan!
+% When including a figure in your poster, be sure that the commands are typed in the following order:
+% \begin{figure}
+% \includegraphics[...]{...}
+% \caption{...}
+% \end{figure}
+% That is, put the \caption after the \includegraphics
+%-----------------------------------------------------------
+
+\usecaptiontemplate{
+\small
+\structure{\insertcaptionname~\insertcaptionnumber:}
+\insertcaption}
+
+%-----------------------------------------------------------
+% Define colours (see beamerthemeconfposter.sty to change these colour definitions)
+%-----------------------------------------------------------
+% \setbeamercolor{frametitle headline}{fg=white}
+% \setbeamercolor{institute in headline}{fg=white}
+% \setbeamercolor{author in headline}{fg=white}
+% \setbeamercolor{title in headline}{fg=white}
+
+
+\definecolor{bordo}{RGB}{153,24,44}
+\definecolor{firebrick}{RGB}{178,34,34}
+%\definecolor{engred}{RGB}{204,17,0}
+\definecolor{engred}{RGB}{178,34,34}
+\definecolor{anti-flashwhite}{rgb}{0.95, 0.95, 0.96}
+\definecolor{whitesmoke}{rgb}{0.96, 0.96, 0.96}
+
+\definecolor{light-orange}{RGB}{254,237,222}
+\definecolor{dark-orange}{RGB}{230,85,13}
+
+% isu colors 
+\definecolor{isu-red}{RGB}{200,16,4}
+\definecolor{isu-yellow}{RGB}{241,190,72}
+\definecolor{isu-dark}{RGB}{82,71,39}
+\definecolor{isu-mid}{RGB}{155,148,95}
+\definecolor{isu-light}{RGB}{202,199,167}
+\definecolor{isu-lightblue}{RGB}{122,153,172}
+% --------------
+
+% % ---------------------
+% % poster with orange and blue colors
+% \setbeamercolor{block title}{fg=white,bg=dred!120}
+% \setbeamercolor{block body}{fg=white, bg=dblue!30}
+% \setbeamercolor{block alerted title}{fg=dblue!90,bg=dark-orange}
+% \setbeamercolor{block alerted body}{fg=black,bg=white}
+% \setbeamercolor{postit}{fg=white,bg=dgreen!50}
+% \setbeamercolor{box.te}{fg=white,bg=dblue!60}
+% \setbeamercolor{box.ti}{fg=dark-orange,bg=dblue!90}
+% \setbeamercolor{background canvas}{bg=anti-flashwhite}
+% % ---------------------
+
+% ---------------------
+% poster with ISU colors
+\setbeamercolor{block title}{fg=white,bg=dred!120}
+\setbeamercolor{block body}{fg=white, bg=dblue!30}
+
+\setbeamercolor{block alerted title}{fg=isu-red, bg=isu-yellow}
+\setbeamercolor{block alerted body}{fg=black,bg=white}
+\setbeamercolor{postit}{fg=white,bg=dgreen!50}
+\setbeamercolor{box.te}{fg=white,bg=dblue!60}
+\setbeamercolor{box.ti}{fg=isu-red,bg=isu-yellow}
+\setbeamercolor{background canvas}{bg=anti-flashwhite}
+%\setbeamertemplate{background canvas}[vertical shading][bottom=isu-mid,top=anti-flashwhite]
+
+\setbeamercolor{local structure}{fg=isu-red}
+\setbeamercolor{item projected}{fg=isu-red}
+\setbeamercolor{item}{fg=isu-red}
+\setbeamercolor{enumerate item}{fg=isu-mid, bg=isu-red}
+% ---------------------
+
+
+% \setbeamercolor{alerted text}{fg=blue}
+% \setbeamercolor{background canvas}{bg=anti-flashwhite}
+% \setbeamercolor{block body alerted}{bg=normal text.bg!90!blue}
+% \setbeamercolor{block body}{bg=normal text.bg!90!blue}
+% \setbeamercolor{block body example}{bg=normal text.bg!90!blue}
+% \setbeamercolor{block title alerted}{use={normal text,alerted text},fg=alerted text.fg!75!normal text.fg,bg=normal text.bg!75!blue}
+% \setbeamercolor{block title}{bg=blue}
+% \setbeamercolor{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=normal text.bg!75!blue}
+% \setbeamercolor{fine separation line}{}
+% \setbeamercolor{frametitle}{fg=brown}
+% \setbeamercolor{item projected}{fg=blue}
+% \setbeamercolor{normal text}{bg=blue,fg=yellow}
+% \setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+% \setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+% \setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+% \setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+% \setbeamercolor{section in sidebar}{fg=brown}
+% \setbeamercolor{section in sidebar shaded}{fg= grey}
+% \setbeamercolor{separation line}{}
+% \setbeamercolor{sidebar}{bg=red}
+% \setbeamercolor{sidebar}{parent=palette primary}
+% \setbeamercolor{structure}{bg=blue, fg=firebrick}
+% \setbeamercolor{subsection in sidebar}{fg=brown}
+% \setbeamercolor{subsection in sidebar shaded}{fg= grey}
+%\usebackgroundtemplate{bg=white}
+%\setbeamercolor{title}{fg=white}
+%\setbeamercolor{titlelike}{fg=white}
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth, height=\paperheight]{figure/pp.jpg}}
+%\setbeamertemplate{blocks}[rounded][shadow=true]
+%\setbeamercolor{local structure}{fg=dark-orange}
+%\setbeamercolor{item projected}{fg=firebrick}
+%\setbeamercolor{item}{fg=dark-orange}
+%\setbeamercolor{enumerate item}{fg=dark-orange}
+%\setbeamertemplate{background canvas}[vertical shading][bottom=bordo!40!black,top=structure.fg!25]
+%\setbeamertemplate{sidebar canvas left}[horizontal shading][left=white!40!black,right=black]
+
+
+%-----------------------------------------------------------
+% Name and authors of poster/paper/research
+%-----------------------------------------------------------
+% \addtobeamertemplate{frametitle}{}
+\usepackage{tcolorbox}
+\setbeamertemplate{headline}{
+\leavevmode
+ \begin{columns}
+
+    \begin{column}{0.1\linewidth}
+    \includegraphics[scale=.4]{qrcode} \\
+    \Large{@nachalca}
+    \end{column}
+      \begin{column}{0.9\linewidth}
+      \vskip1cm
+   \centering
+    %\usebeamercolor{title in headline}{\color{dblue!90}\fontsize{100}{120}{\textbf{\inserttitle}}\\[0.5ex]}
+    \usebeamercolor{title in headline}{\color{isu-red}\fontsize{100}{120}{\textbf{\inserttitle}}\\[0.5ex]}
+   \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+   \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+   \vskip1cm
+  \end{column}
+  \vspace{0.5cm}
+ \end{columns}
+
+\vspace{0.5in}
+\hspace{0.5in}\begin{beamercolorbox}[wd=47in,colsep=0.15cm]{box.ti}\end{beamercolorbox}
+\vspace{0.1in}
+}
+
+\title{Fully Bayesian analysis of allele-specific RNA-seq data using a hierarchical, overdispersed, count regression model}
+\author{Ignacio Alvarez \and Jarad Niemi \and Dan Nettleton}
+\institute{Department of Statistics, Iowa State University}
+%\leftcorner{ \includegraphics{qrcode} }
+  
+
+%-----------------------------------------------------------
+% Start the poster itself
+%-----------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}
+    \begin{columns}[t,totalwidth=\threecolwid]        
+        \begin{column}{\onecolwid}
+
+\begin{alertblock}{Allele-specific gene expression}
+Diploid orgnisms have two copies of each genes (alleles) that can be separately transcribed. The RNA abundance of any particular allele is known as allele-specific expression (ASE). \\
+
+\vspace{1cm}
+
+\begin{itemize}
+\item In plant breeding, hybrids benefits from heterosis (hybrid vigor).
+\item ASE is relevant for the study of this phenomenon at the molecular level.
+\end{itemize}
+ 
+%When two alleles have sequences of polymorphisms in transcribed regions, ASE can be studied with RNA-seq read count data. Reads counts that can be unambiguously attributed to a specific allele are correlated with allele's expression.
+
+\vspace{1cm}
+
+\begin{beamercolorbox}{box.ti}
+\vspace{.1cm}
+Goals of the study: \\
+\textbf{We present statistical methods for modelling ASE and detecting genes where differential allele expression. We propose a hierarchical overdispersed Poisson model to deal with ASE counts. 
+}
+\vspace{.1cm}
+\end{beamercolorbox}
+\vspace{.1cm}
+%The model accommodates gene specific overdispersion, it has an internal measure of the reference allele bias, and use random effects to model the gene specific regression parameters.  Fully Bayesian inference is obtained using {\tt fbseq} package that implements a parallel strategy trough GPU is then used to make the computational times reasonable. Simulation and real data analysis suggest the proposed model is a practical and powerful tool for the study of differential allele usage.
+%\vspace{.5cm}
+% \begin{description}
+%   \item[something1]: balbla
+%   \item[something2]: bleble
+% \end{description}
+\end{alertblock}
+\vspace{1cm}
+
+\begin{alertblock}{Maize experimental dataset}
+\begin{description}
+\item[Dataset]: Maize experiment  from \cite{Paschold2012}. 
+\item[Design]:  Hybrid genotype (B73xMo17), 2 flow cell blocks, 4 replicate plants per block, 3 measures per plant 
+\end{description}
+
+\begin{center}
+\includegraphics[trim=0cm 2cm 0cm 2cm, scale=2, clip]{boxplot_bm}
+\end{center}
+
+Let $m_{ga}$ be mean expression per gene and allele, consider: 
+\[
+\begin{array}{cc}
+A_g=\log(m_{gB}+m_{gM}) & M_g = \log(m_{gB}/m_{gM})
+\end{array}
+\]
+
+\vspace{1cm}
+
+ \begin{description}
+   \item[SNP]: ASE cannot be assessed for every gene
+   \item[Bias]: ASE can be biased towards reference allele
+   \item[Subsample]: two measures from same plant
+   \item[Sparsity]: $M_g$ close to zero for most genes
+ \end{description}
+
+\begin{center}
+\includegraphics[trim=0cm 0cm 0cm 0cm, scale=1.9, clip]{dtplot}
+\end{center}
+
+
+\end{alertblock}
+
+\end{column}  %end of left  column
+
+\begin{column}{1cm}\end{column}  % empty spacer column
+
+\begin{column}{1.06\twocolwid}    
+      \begin{alertblock}{Poisson-lognormal hierarchical model}
+\begin{columns}[t, totalwidth = \twocolwid] 
+
+\begin{column}{.25\twocolwid}
+
+\begin{beamercolorbox}{box.ti}
+\vspace{.1cm}
+
+Data model
+\vspace{.1cm}
+\end{beamercolorbox}
+
+$Y_{gn}$ is the ASE count of gene $g$, in \textit{allele-specific} sample $n$.  
+\begin{itemize}
+\item $g=1\ldots,G \approx 16000$
+\item n = $1\ldots,N=8$ ($n \leq 4$ from B73)
+\end{itemize}
+
+\begin{equation}\label{model}
+\begin{array}{ll}
+Y_{gn} & \sim P(e^{h_{n} + x_{n}^{\top} \beta_g + \epsilon_{gn} })  \\ 
+\epsilon_{gn} & \sim  N(0, \gamma_g)
+\end{array} 
+\end{equation}
+
+\[
+Y_g =  \begin{bmatrix} Y_{g1}\\Y_{g2}\\ Y_{g3}\\Y_{g4}\\ Y_{g5}\\Y_{g6}\\ Y_{g7}\\Y_{g8} \end{bmatrix}
+\;\;\;
+X = 
+%\left[ 1_8 \vdots \begin{pmatrix} 1 \\ -1 \end{pmatrix} \otimes 1_4 \vdots 1_4 \otimes \begin{pmatrix} 1 \\-1 \end{pmatrix} \vdots I_2 \otimes \begin{pmatrix} 1 \\-1 \end{pmatrix} \otimes 1_2 \right]=
+\begin{bmatrix*}[r]
+1&  1&   1&   1&   0 \\
+1&  1&  -1&   1&   0 \\
+1&  1&   1&  -1&   0 \\
+1&  1&  -1&  -1&   0 \\
+1& -1&   1&   0&   1 \\
+1& -1&  -1&   0&   1 \\
+1& -1&   1&   0&  -1 \\
+1& -1&  -1&   0&  -1 \\
+\end{bmatrix*}
+\]
+% The factor $h_{n}$ represent the log of the library size for \textit{sample} $n$.
+% Model matrix $X$ is formed by $x_{gn}^{\top}$ on its rows, it has 8 rows and is the same for all genes. In order to sure independence among regression coefficients, we use zero-sum parametrization for $X$
+% \begin{itemize}
+%  \item $\beta_{1g}$:expected ASE count in gene $g$ averaging both alleles.
+%  \item $\beta_{2g}$: half allele difference gene transcript abundance. 
+%  \item $\beta_{3g}$: flow cell blocking factor 
+%  \item $(\beta_{4g}, \beta_{5g})$: replicate flow cell interaction (subsampling)
+% \end{itemize}
+% Overdispersion effects: $\epsilon_{gn}$, are normally distributed with a gene specific variance, $\gamma_g$.
+\end{column}
+
+\begin{column}{.5cm}\end{column}  % empty spacer column
+
+\begin{column}{.35\twocolwid}
+
+\begin{beamercolorbox}{box.ti}
+
+\vspace{.05cm}
+
+Gene-specific layer
+
+\vspace{.05cm}
+
+\end{beamercolorbox}
+\vspace{.1cm}
+
+Posterior for gene-specific $(\beta_g, \gamma_g)$, is learned borrowing information across all genes. 
+\vspace{1cm}
+
+Normal scale mixture to deal with sparsity in $\beta_{kg}$
+\[
+\begin{array}{llll}
+\mbox{Cauchy} & \beta_{kg} & \stackrel{\text{ind}}{\sim} N(\theta_k, \ \sigma_k^2\xi_k ) & \xi_k \sim IG(1/2, 1/2) \\
+\mbox{t-student} & \beta_{kg} & \stackrel{\text{ind}}{\sim} N(\theta_k, \ \sigma_k^2\xi_k ) & \xi_k \sim IG(3, 2) \\
+\mbox{Laplace} & \beta_{kg} & \stackrel{\text{ind}}{\sim} N(\theta_k, \ \sigma_k^2\xi_k ) & \xi_k \sim Exp(1)  \\
+\mbox{horseshoe} & \beta_{kg} & \stackrel{\text{ind}}{\sim} N(\theta_k, \ \sigma_k^2\xi_k ) & \xi_k \sim Ca^{+}(0,1)
+\end{array} 
+\]
+\vspace{1cm}
+
+Remove reference allele bias:
+\begin{description}
+\item[Allele effect] $\Delta_g = \beta_{2g}-\theta_2$
+\end{description}
+\vspace{1cm}
+
+Overdispersion variances: $\gamma_g  \stackrel{\text{ind}}{\sim} IG(\frac{\nu}{2}, \frac{\nu\tau}{2})$
+\end{column}
+\begin{column}{.5cm}\end{column}  % empty spacer column
+
+\begin{column}{.4\twocolwid}
+
+\begin{beamercolorbox}{box.ti}
+\vspace{.05cm}
+
+Full Bayesian inference
+\vspace{.05cm}
+
+\end{beamercolorbox}
+\vspace{.5cm}
+Fully Bayesian inference of model \eqref{model} obtained with {\tt fbseq} package \citep{landau2016}\\
+Priors: 
+\[ \label{hyp_v1}
+\begin{array}{cccc}
+\theta_k \stackrel{\text{ind}}{\sim} \text{Normal}(0, c_{k}) &
+\sigma_k^2  \stackrel{\text{ind}}{\sim} \text{Uniform}(0, s_{k}) &
+\nu   \sim \text{Uniform}(0, d) &
+\tau \sim G(a, b)
+\end{array} \]
+\vspace{.5cm}
+
+\begin{description} 
+\item[Main goal] Deteect genes with $|\Delta_g| > c/2$ where $c=log(1.25)/2$ \citep{Lithio2015}
+\vspace{.2cm}
+
+\item[Correction] $P^c( |\Delta_g| \leq c/2 \vert y) =  \mbox{min}\left\{ P( \Delta_g < c) , P( \Delta_g > -c) \right\}$, to deal with vague posteriors \citep{VanDeWiel2013}.
+\vspace{.2cm}
+
+\item[Desicion rule] $d = I(P^c( |\Delta_g| \leq c/2 \vert y) \leq 0.05)$ 
+%\vspace{.2cm}
+\end{description}
+Decision rule minimize expected loss $L(d,y) = 19FD + FN$, where $FD$ and $FN$ are the posterior expected false discoveries total and false negative total. \citep{Muller2004}
+\end{column}
+\end{columns}
+\end{alertblock} % end of model block
+
+\begin{columns}[t, totalwidth = 1.06\twocolwid] 
+
+\begin{column}{\onecolwid}
+\begin{alertblock}{Results from Simulation Study}
+
+Simulate 24 scenarios $w = (.5, .95), s = (1, 1.8), p = (1, .5), T= (0.25, 1, 4)$
+  \begin{itemize}
+  \item Sparsity ($w$): proportion of genes with NO effect.
+  \item Strengh ($s$): enlarge factor for DE genes
+  \item Bias ($p$): proportion of non-reference allele lost due to bias
+  \item Overdispersion ($T$): multiplicative factor of overdispersion
+  \end{itemize}
+  
+\vspace{.5cm}
+
+ROC curves from simulations  
+\begin{center}
+\includegraphics[trim=0cm 5cm 0cm 7cm, clip, scale=2]{fig_3sim_roc} \\
+\end{center}
+
+AUC measures for hierarchical models
+\begin{center}
+\includegraphics[trim=0cm 4cm 0cm 4cm, clip, scale=1.7]{aucs10}
+\end{center}
+  
+\end{alertblock}
+\end{column} % end of simulations column
+
+%\begin{column}{.5cm}\end{column}  % empty spacer column
+
+\begin{column}{1.15\onecolwid}
+\begin{alertblock}{Bayesian analysis of maize data}
+
+\begin{itemize}
+\item Use {\tt fbseq} package to obtian computational performance through GPU
+\item $\beta_{kg} \sim Cauchy(\theta_{k}, \sigma_{k})$ is based on the results from simulation study.
+\end{itemize}
+
+\begin{center}
+\includegraphics[trim=1cm 1cm 1cm 1cm, scale=1, clip, scale=1.8]{resultDE}
+\end{center}
+
+\begin{description}
+\item[Allele effect]:  17\% of the genes shows allele differential expression
+\item[Bias]: $E(\theta_2\vert y) = 0.126$, suggest 1 out 5 reads from Mo17 is lost
+\item[Interaction effects]: results suggest $\sigma_4 \approx 10 \sigma_5$
+\end{description}
+
+\end{alertblock}
+
+\begin{alertblock}{Discussion}
+\begin{itemize}
+
+\item We propose a hierarchical overdispersed Poisson model to deal with ASE data. 
+    \begin{itemize} 
+        \item internal measure of reference allele bias 
+        \item allows dependencies among measurements due to subsampling nature of ASE data.
+        \item gene specific overdispersion patterns were well accommodated by the proposed model
+    \end{itemize}
+\item Cauchy distribution shows good signals detection results
+\item Learning the gene specific parameter distributions improves performance
+\end{itemize}
+
+\vspace{.5cm}
+
+Future work: 
+\begin{itemize}
+\item Include more varieties (other genomes) and total RNAseq expression.  
+\item Explore interactions among overdispersion, signal strength and sparsity. 
+\end{itemize}
+\end{alertblock}
+
+\end{column}
+\end{columns}
+
+\end{column}
+\end{columns}
+
+
+\end{frame}
+
+%=======================================================================
+
+\begin{frame}
+\begin{alertblock}{References}
+  \bibliographystyle{asa}      
+\small{  \bibliography{library.bib} }
+\end{alertblock}
+\end{frame}
+
+\end{document}
